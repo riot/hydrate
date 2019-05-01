@@ -1,0 +1,18 @@
+<my-component>
+  <p onclick={onClick}>{ state.message }</p>
+  <input value={ value }/>
+
+  <script>
+    export default {
+      state: {
+        message: 'hello',
+      },
+      value: 'input value',
+      onClick() {
+        this.update({
+          message: 'hello world'
+        })
+      },
+    }
+  </script>
+</my-component>
