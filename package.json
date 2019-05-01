@@ -1,21 +1,21 @@
 {
   "name": "@riotjs/hydrate",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Riot.js hydrate strategy for SSR applications",
   "main": "hydrate.js",
-  "jsnext:main": "index.next.js",
-  "module": "index.next.js",
+  "jsnext:main": "src/index.js",
+  "module": "src/index.js",
   "scripts": {
     "prepare": "npm i riot@4.0.0-rc.5 --no-save",
     "prepublishOnly": "npm run build && npm test",
-    "lint": "eslint index.next.js test/*.js rollup.config.js",
+    "lint": "eslint src/*.js test/*.js rollup.config.js",
     "build": "rollup -c",
     "pretest": "npm run build",
     "test": "npm run lint && mocha -r esm test/*.js"
   },
   "files": [
     "hydrage.js",
-    "index.next.js"
+    "src"
   ],
   "repository": {
     "type": "git",

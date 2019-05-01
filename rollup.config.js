@@ -1,7 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve'
 
 export default {
-  input: 'index.next.js',
+  input: 'src/index.js',
   plugins: [
     resolve({
       jsnext: true

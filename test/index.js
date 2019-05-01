@@ -18,7 +18,7 @@ describe('@riotjs/hydrate', () => {
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
 
     document.body.appendChild(root)
-    const instance = hydrate(root, MyComponent)
+    const instance = hydrate(MyComponent)(root)
 
     expect(instance.$('p').innerHTML).to.be.equal('goodbye')
     expect(instance.$('input').value).to.be.equal('foo')
@@ -30,14 +30,14 @@ describe('@riotjs/hydrate', () => {
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
 
     document.body.appendChild(root)
-    const instance = hydrate(root, MyComponent)
+    const instance = hydrate(MyComponent)(root)
 
     instance.$('p').onclick()
 
     expect(instance.$('p').innerHTML).to.be.equal(instance.state.message)
   })
 
-  it('it preserves riot DOM events', () => {
+  it('it triggers the hydrate events', () => {
     const MyComponent = require('./components/my-component.riot').default
     const root = document.createElement('div')
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
@@ -47,14 +47,14 @@ describe('@riotjs/hydrate', () => {
 
     document.body.appendChild(root)
 
-    hydrate(root, {
+    hydrate({
       ...MyComponent,
       exports: {
         ...MyComponent.exports,
         onBeforeHydrate: beforeSpy,
         onHydrated: afterSpy
       }
-    })
+    })(root)
 
     expect(beforeSpy).to.have.been.called
     expect(afterSpy).to.have.been.called
