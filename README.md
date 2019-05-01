@@ -31,6 +31,44 @@ hydrateWithMyComponent(
 )
 ```
 
+### Callbacks
+
+You can use the `onBeforeHydrate` and `onHydrated` callback in your components to setup your application internal state. Notice that these callbacks will be called only on the component hydrated and not on all its nested children components.
+
+```html
+<my-component>
+  <script>
+    export default {
+      onBeforeHydrate() {
+        // do something before the hydration
+      },
+      onHydrated() {
+        // do something after the hydration
+      }
+    }
+  </script>
+</my-component>
+```
+
+### Caveats
+
+The `hydrate` method will mount your components on a clone of your target node not yet in the DOM. If your component state relies on DOM computations like `get​Bounding​Client​Rect` and you don't want to use the `onHydrated` callback, you will need to use a `requestAnimationFrame` callback in your `onMounted` method to wait that your root node has replaced completely the initial static markup for example:
+
+```html
+<my-component>
+  <script>
+    export default {
+      onMounted() {
+        // your root node is not yet in the DOM
+        requestAnimationFrame(() => {
+          // your root is in the DOM
+        })
+      },
+    }
+  </script>
+</my-component>
+```
+
 [travis-image]:https://img.shields.io/travis/riot/hydrate.svg?style=flat-square
 [travis-url]:https://travis-ci.org/riot/hydrate
 
