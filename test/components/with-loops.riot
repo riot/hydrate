@@ -1,0 +1,26 @@
+<my-component>
+  <h2>With Loops</h2>
+  <div>
+    <span each={item in state.nested.items}>{item}</span>
+    <p each={item in state.items}>{item}</p>
+  </div>
+  <script>
+    export default {
+      state: {
+        nested: {}
+      },
+      insertItems(){
+        this.update({
+          items:[1,2,3,4,5]
+        })
+      },
+      insertNestedItems(){
+        this.update({
+          nested:{
+            items:[1,2,3,4,5]
+          }
+        })
+      }
+    }
+  </script>
+</my-component>

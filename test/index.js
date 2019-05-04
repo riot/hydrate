@@ -59,4 +59,21 @@ describe('@riotjs/hydrate', () => {
     expect(beforeSpy).to.have.been.called
     expect(afterSpy).to.have.been.called
   })
+
+  it('it works with loops', () => {
+    const WithLoops = require('./components/with-loops.riot').default
+    const root = document.createElement('div')
+    root.innerHTML = '<h2>With Loops</h2><div></div>'
+
+    document.body.appendChild(root)
+    const instance = hydrate(WithLoops)(root)
+
+    instance.insertItems()
+    expect(root.querySelectorAll('p').length).to.be.equal(5)
+
+    instance.insertNestedItems()
+    expect(root.querySelectorAll('span').length).to.be.equal(5)
+  })
+
+
 })
