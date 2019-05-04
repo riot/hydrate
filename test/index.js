@@ -1,27 +1,36 @@
-import JSDOMGlobal from 'jsdom-global'
-import register from '@riotjs/ssr/register'
 import {expect, use} from 'chai'
+import JSDOMGlobal from 'jsdom-global'
+import hydrate from '../'
+import register from '@riotjs/ssr/register'
 import sinonChai from 'sinon-chai'
 import {spy} from 'sinon'
-import hydrate from '../'
 
 describe('@riotjs/hydrate', () => {
   before(() => {
-    JSDOMGlobal()
+    JSDOMGlobal(false, { pretendToBeVisual: true })
     use(sinonChai)
     register()
   })
 
-  it('it replaces the DOM nodes properly', () => {
+  it('it replaces the DOM nodes properly', (done) => {
     const MyComponent = require('./components/my-component.riot').default
     const root = document.createElement('div')
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
 
     document.body.appendChild(root)
+    root.querySelector('input').focus()
+
+    expect(document.activeElement === root.querySelector('input')).to.be.ok
+
     const instance = hydrate(MyComponent)(root)
 
-    expect(instance.$('p').innerHTML).to.be.equal('goodbye')
+    expect(instance.$('p').innerHTML).to.be.equal('hello')
     expect(instance.$('input').value).to.be.equal('foo')
+
+    window.requestAnimationFrame(() => {
+      expect(document.activeElement === instance.$('input')).to.be.ok
+      done()
+    })
   })
 
   it('it preserves riot DOM events', () => {
@@ -69,11 +78,9 @@ describe('@riotjs/hydrate', () => {
     const instance = hydrate(WithLoops)(root)
 
     instance.insertItems()
-    expect(root.querySelectorAll('p').length).to.be.equal(5)
+    expect(instance.$$('p')).to.have.length(5)
 
     instance.insertNestedItems()
-    expect(root.querySelectorAll('span').length).to.be.equal(5)
+    expect(instance.$$('span')).to.have.length(5)
   })
-
-
 })
