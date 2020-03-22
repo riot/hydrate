@@ -41,7 +41,7 @@ describe('@riotjs/hydrate', () => {
     document.body.appendChild(root)
     const instance = hydrate(MyComponent)(root)
 
-    instance.$('p').onclick()
+    instance.$('p').click()
 
     expect(instance.$('p').innerHTML).to.be.equal(instance.state.message)
   })
