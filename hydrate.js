@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('riot')) :
     typeof define === 'function' && define.amd ? define(['riot'], factory) :
-    (global = global || self, global.hydrate = factory(global.riot));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.hydrate = factory(global.riot));
 }(this, (function (riot) { 'use strict';
 
     function syncBooleanAttrProp(fromEl, toEl, name) {

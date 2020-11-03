@@ -39,3 +39,6 @@ yarn.lock
 
 # mac useless file
 .DS_Store
+
+# Editor generate files
+.idea
