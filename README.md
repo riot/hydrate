@@ -1,7 +1,6 @@
 # @riotjs/hydrate
 
-[![Build Status][travis-image]][travis-url]
-
+[![Build Status][ci-image]][ci-url]
 [![NPM version][npm-version-image]][npm-url]
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![MIT License][license-image]][license-url]
@@ -69,8 +68,9 @@ The `hydrate` method will mount your components on a clone of your target node n
 </my-component>
 ```
 
-[travis-image]:https://img.shields.io/travis/riot/hydrate.svg?style=flat-square
-[travis-url]:https://travis-ci.org/riot/hydrate
+
+[ci-image]:https://img.shields.io/github/workflow/status/riot/hydrate/test?style=flat-square
+[ci-url]:https://github.com/riot/hydrate/actions
 
 [license-image]:http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
 [license-url]:LICENSE
