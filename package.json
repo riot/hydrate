@@ -6,7 +6,6 @@
   "jsnext:main": "src/index.js",
   "module": "src/index.js",
   "scripts": {
-    "prepare": "npm i riot@5 --no-save",
     "prepublishOnly": "npm run build && npm test",
     "lint": "eslint src/*.js test/*.js rollup.config.js",
     "build": "rollup -c",
@@ -46,6 +45,7 @@
     "jsdom": "16.6.0",
     "jsdom-global": "3.0.2",
     "mocha": "^8.4.0",
+    "riot": "^6.0.0",
     "rollup": "^2.53.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "sinon": "^11.1.1",
