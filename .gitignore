@@ -42,3 +42,6 @@ yarn.lock
 
 # Editor generate files
 .idea
+
+# generated files
+hydrate.js

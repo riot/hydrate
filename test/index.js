@@ -1,7 +1,7 @@
 import {expect, use} from 'chai'
 import JSDOMGlobal from 'jsdom-global'
 import hydrate from '../'
-import register from '@riotjs/ssr/register'
+import register from '@riotjs/register'
 import sinonChai from 'sinon-chai'
 import {spy} from 'sinon'
 
