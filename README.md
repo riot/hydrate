@@ -69,7 +69,7 @@ The `hydrate` method will mount your components on a clone of your target node n
 ```
 
 
-[ci-image]:https://img.shields.io/github/workflow/status/riot/hydrate/test?style=flat-square
+[ci-image]:https://img.shields.io/github/actions/workflow/status/riot/hydrate/test.yml?style=flat-square
 [ci-url]:https://github.com/riot/hydrate/actions
 
 [license-image]:http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
