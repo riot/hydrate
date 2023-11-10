@@ -44,4 +44,5 @@ yarn.lock
 .idea
 
 # generated files
-hydrate.js
+/index.js
+/index.cjs

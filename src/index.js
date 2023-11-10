@@ -1,5 +1,5 @@
 import { component } from 'riot'
-import specialElHandlers from 'morphdom/src/specialElHandlers'
+import specialElHandlers from 'morphdom/src/specialElHandlers.js'
 
 /**
  * Create a DOM tree walker
@@ -11,7 +11,7 @@ function createWalker(node) {
     node,
     NodeFilter.SHOW_ELEMENT,
     { acceptNode: () => NodeFilter.FILTER_ACCEPT },
-    false
+    false,
   )
 }
 
@@ -46,7 +46,8 @@ function morph(sourceElement, targetElement) {
   const sourceWalker = createWalker(sourceElement)
   const targetWalker = createWalker(targetElement)
   // recursive function to walk source element tree
-  const walk = fn => sourceWalker.nextNode() && targetWalker.nextNode() && fn() && walk(fn)
+  const walk = (fn) =>
+    sourceWalker.nextNode() && targetWalker.nextNode() && fn() && walk(fn)
 
   walk(() => {
     const { currentNode } = sourceWalker
@@ -81,8 +82,7 @@ export default function hydrate(componentAPI) {
     // swap the html
     element.parentNode.replaceChild(clone, element)
 
-    if (instance.onHydrated)
-      instance.onHydrated(instance.props, instance.state)
+    if (instance.onHydrated) instance.onHydrated(instance.props, instance.state)
 
     return instance
   }

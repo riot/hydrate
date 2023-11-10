@@ -1,21 +1,25 @@
-import resolve from 'rollup-plugin-node-resolve'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+
+const globals = {
+  riot: 'riot',
+}
 
 export default {
   input: 'src/index.js',
-  plugins: [
-    resolve({
-      jsnext: true
-    })
-  ],
-  external: ['riot'],
+  plugins: [nodeResolve()],
   output: [
     {
       name: 'hydrate',
-      file: 'hydrate.js',
-      globals: {
-        riot: 'riot'
-      },
-      format: 'umd'
-    }
-  ]
+      file: 'index.cjs',
+      format: 'umd',
+      globals,
+    },
+    {
+      name: 'hydrate',
+      file: 'index.js',
+      format: 'es',
+      globals,
+    },
+  ],
+  external: ['riot'],
 }

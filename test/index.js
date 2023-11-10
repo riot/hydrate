@@ -1,19 +1,18 @@
-import {expect, use} from 'chai'
+import { expect, use } from 'chai'
 import JSDOMGlobal from 'jsdom-global'
-import hydrate from '../'
-import register from '@riotjs/register'
+import hydrate from '../index.js'
 import sinonChai from 'sinon-chai'
-import {spy} from 'sinon'
+import { spy } from 'sinon'
+import MyComponent from './components/my-component.riot'
+import WithLoops from './components/with-loops.riot'
 
 describe('@riotjs/hydrate', () => {
   before(() => {
     JSDOMGlobal(false, { pretendToBeVisual: true })
     use(sinonChai)
-    register()
   })
 
   it('it replaces the DOM nodes properly', (done) => {
-    const MyComponent = require('./components/my-component.riot').default
     const root = document.createElement('div')
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
 
@@ -34,7 +33,6 @@ describe('@riotjs/hydrate', () => {
   })
 
   it('it preserves riot DOM events', () => {
-    const MyComponent = require('./components/my-component.riot').default
     const root = document.createElement('div')
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
 
@@ -47,7 +45,6 @@ describe('@riotjs/hydrate', () => {
   })
 
   it('it triggers the hydrate events', () => {
-    const MyComponent = require('./components/my-component.riot').default
     const root = document.createElement('div')
     root.innerHTML = '<p>goodbye</p><input value="foo"/>'
 
@@ -61,8 +58,8 @@ describe('@riotjs/hydrate', () => {
       exports: {
         ...MyComponent.exports,
         onBeforeHydrate: beforeSpy,
-        onHydrated: afterSpy
-      }
+        onHydrated: afterSpy,
+      },
     })(root)
 
     expect(beforeSpy).to.have.been.called
@@ -70,7 +67,6 @@ describe('@riotjs/hydrate', () => {
   })
 
   it('it works with loops', () => {
-    const WithLoops = require('./components/with-loops.riot').default
     const root = document.createElement('div')
     root.innerHTML = '<h2>With Loops</h2><div></div>'
 

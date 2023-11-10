@@ -2,22 +2,26 @@
   "name": "@riotjs/hydrate",
   "version": "6.0.1",
   "description": "Riot.js hydrate strategy for SSR applications",
-  "main": "hydrate.js",
-  "jsnext:main": "src/index.js",
-  "module": "src/index.js",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
+  "files": [
+    "index.cjs",
+    "index.js"
+  ],
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
     "lint": "eslint src/*.js test/*.js rollup.config.js",
     "build": "rollup -c",
     "pretest": "npm run build",
-    "test": "npm run lint && mocha -r esm --exit test/*.js"
+    "test": "npm run lint && NODE_OPTIONS=\"--loader @riotjs/register\" mocha --exit test/*.js"
   },
-  "files": [
-    "src"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GianlucaGuarini/@riotjs/hydrate.git"
+    "url": "git+https://github.com/riot/hydrate.git"
   },
   "keywords": [
     "riot",
@@ -27,31 +31,32 @@
     "components"
   ],
   "peerDependencies": {
-    "riot": "^6.0.0 || ^7.0.0"
+    "riot": "^6.0.0 || ^7.0.0 || ^9.0.0"
   },
-  "author": "Gianluca Guarini <gianluca.guarini@gmail.com> (http://gianlucaguarini.com)",
+  "author": "Gianluca Guarini <gianluca.guarini@gmail.com> (https://gianlucaguarini.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GianlucaGuarini/@riotjs/hydrate/issues"
+    "url": "https://github.com/riot/hydrate/issues"
   },
-  "homepage": "https://github.com/GianlucaGuarini/@riotjs/hydrate#readme",
+  "homepage": "https://github.com/riot/hydrate#readme",
   "devDependencies": {
-    "@riotjs/compiler": "^6.3.2",
-    "@riotjs/register": "^6.0.1",
-    "chai": "^4.3.6",
-    "eslint": "^8.22.0",
-    "eslint-config-riot": "^3.0.0",
-    "esm": "^3.2.25",
-    "jsdom": "20.0.0",
+    "@riotjs/compiler": "^9.0.6",
+    "@riotjs/prettier-config": "^1.1.0",
+    "@riotjs/register": "^9.0.0",
+    "@rollup/plugin-node-resolve": "*",
+    "chai": "^4.3.10",
+    "eslint": "^8.53.0",
+    "eslint-config-riot": "^4.1.1",
+    "jsdom": "22.1.0",
     "jsdom-global": "3.0.2",
-    "mocha": "^8.4.0",
-    "riot": "^7.0.3",
-    "rollup": "^2.78.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "sinon": "^14.0.0",
+    "mocha": "^10.2.0",
+    "prettier": "^3.0.3",
+    "riot": "^9.1.1",
+    "rollup": "^4.3.0",
+    "sinon": "^17.0.1",
     "sinon-chai": "^3.7.0"
   },
   "dependencies": {
-    "morphdom": "^2.6.1"
+    "morphdom": "^2.7.1"
   }
 }

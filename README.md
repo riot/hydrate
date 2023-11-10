@@ -26,7 +26,7 @@ const hydrateWithMyComponent = hydrate(MyComponent)
 // hydrate the SSR DOM contained in the #root element
 hydrateWithMyComponent(
   document.getElementById('root'),
-  window.__INITIAL_APPLICATION_PROPS__
+  window.__INITIAL_APPLICATION_PROPS__,
 )
 ```
 
@@ -43,7 +43,7 @@ You can use the `onBeforeHydrate` and `onHydrated` callback in your components t
       },
       onHydrated() {
         // do something after the hydration
-      }
+      },
     }
   </script>
 </my-component>
@@ -68,15 +68,10 @@ The `hydrate` method will mount your components on a clone of your target node n
 </my-component>
 ```
 
-
-[ci-image]:https://img.shields.io/github/actions/workflow/status/riot/hydrate/test.yml?style=flat-square
-[ci-url]:https://github.com/riot/hydrate/actions
-
-[license-image]:http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
-[license-url]:LICENSE
-
-[npm-version-image]:http://img.shields.io/npm/v/@riotjs/hydrate.svg?style=flat-square
-[npm-downloads-image]:http://img.shields.io/npm/dm/@riotjs/hydrate.svg?style=flat-square
-[npm-url]:https://npmjs.org/package/@riotjs/hydrate
-
-
+[ci-image]: https://img.shields.io/github/actions/workflow/status/riot/hydrate/test.yml?style=flat-square
+[ci-url]: https://github.com/riot/hydrate/actions
+[license-image]: http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
+[license-url]: LICENSE
+[npm-version-image]: http://img.shields.io/npm/v/@riotjs/hydrate.svg?style=flat-square
+[npm-downloads-image]: http://img.shields.io/npm/dm/@riotjs/hydrate.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@riotjs/hydrate
