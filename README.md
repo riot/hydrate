@@ -8,7 +8,7 @@
 ## Installation
 
 ```bash
-npm i -S riotjs @riotjs/hydrate
+npm i -S riot @riotjs/hydrate
 ```
 
 ## Usage
