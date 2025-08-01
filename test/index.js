@@ -1,5 +1,4 @@
 import { expect, use } from 'chai'
-import JSDOMGlobal from 'jsdom-global'
 import hydrate from '../index.js'
 import sinonChai from 'sinon-chai'
 import { spy } from 'sinon'
@@ -8,7 +7,6 @@ import WithLoops from './components/with-loops.riot'
 
 describe('@riotjs/hydrate', () => {
   before(() => {
-    JSDOMGlobal(false, { pretendToBeVisual: true })
     use(sinonChai)
   })
 

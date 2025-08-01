@@ -63,7 +63,7 @@ function morph(sourceElement, targetElement) {
 
 /**
  * Create a custom Riot.js mounting function to hydrate an existing SSR DOM node
- * @param   {RiotComponentShell} componentAPI - component shell
+ * @param   {import('riot').RiotComponent} componentAPI - component shell
  * @returns {Function} function similar to the riot.component
  */
 export default function hydrate(componentAPI) {
