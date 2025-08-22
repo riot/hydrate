@@ -40,21 +40,21 @@
   },
   "homepage": "https://github.com/riot/hydrate#readme",
   "devDependencies": {
-    "@riotjs/compiler": "^10.0.0-beta.2",
+    "@riotjs/compiler": "^10.0.0",
     "@riotjs/prettier-config": "^1.1.0",
-    "@riotjs/register": "^10.0.0-beta.2",
+    "@riotjs/register": "^10.0.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "chai": "^5.2.1",
-    "eslint": "^9.32.0",
+    "chai": "^6.0.1",
+    "eslint": "^9.33.0",
     "eslint-config-riot": "^5.0.2",
     "jsdom": "26.1.0",
     "jsdom-global": "3.0.2",
     "mocha": "^11.7.1",
     "prettier": "^3.6.2",
-    "riot": "10.0.0-rc.1",
-    "rollup": "^4.46.2",
+    "riot": "10.0.0",
+    "rollup": "^4.47.1",
     "sinon": "^21.0.0",
-    "sinon-chai": "^4.0.0"
+    "sinon-chai": "^4.0.1"
   },
   "dependencies": {
     "morphdom": "^2.7.7"
